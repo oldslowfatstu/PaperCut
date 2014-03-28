@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{C631287A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Papercut.SMTP", "lib\Papercut.SMTP\Papercut.SMTP.csproj", "{402FAD8F-0A66-4F66-828A-9B16B628BE01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Papercut.Service", "Papercut.Service\Papercut.Service.csproj", "{3C2C70D6-06C9-4322-8914-992CCD0E3607}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{402FAD8F-0A66-4F66-828A-9B16B628BE01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{402FAD8F-0A66-4F66-828A-9B16B628BE01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{402FAD8F-0A66-4F66-828A-9B16B628BE01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C2C70D6-06C9-4322-8914-992CCD0E3607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C2C70D6-06C9-4322-8914-992CCD0E3607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C2C70D6-06C9-4322-8914-992CCD0E3607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C2C70D6-06C9-4322-8914-992CCD0E3607}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

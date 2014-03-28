@@ -36,8 +36,8 @@ namespace Papercut.SMTP
     /// <summary>
     ///     The server.
     /// </summary>
-    [Export(typeof(IServer))]
-    public class Server : IServer
+    [Export(typeof(ISmtpServer))]
+    public class SmtpServer : ISmtpServer
     {
         #region Fields
 

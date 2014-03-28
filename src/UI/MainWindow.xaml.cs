@@ -70,7 +70,7 @@ namespace Papercut.UI
 
         private readonly NotifyIcon notification;
 
-        private readonly Server server;
+        private readonly SmtpServer server;
 
         private CancellationTokenSource _currentMessageCancellationTokenSource = null;
 
@@ -131,7 +131,7 @@ namespace Papercut.UI
             Processor.MessageReceived += this.Processor_MessageReceived;
 
             // Start listening for connections
-            this.server = new Server();
+            this.server = new SmtpServer();
             try
             {
                 this.server.Bind(Settings.Default.IP, Settings.Default.Port);

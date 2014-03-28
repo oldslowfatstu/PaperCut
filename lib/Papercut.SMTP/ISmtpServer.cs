@@ -23,7 +23,7 @@ namespace Papercut.SMTP
     /// <summary>
     /// The Server interface.
     /// </summary>
-    public interface IServer
+    public interface ISmtpServer
     {
         #region Public Methods and Operators
 
