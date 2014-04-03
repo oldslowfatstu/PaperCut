@@ -20,48 +20,45 @@
 
 namespace Papercut.Mime
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using System.Windows.Automation;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Threading;
+	using System.Threading.Tasks;
 
-    using MimeKit;
+	using MimeKit;
 
-    using Papercut.Annotations;
+	using Papercut.Annotations;
 
-    public static class MessageHelper
-    {
-        public static Task<MimeMessage> LoadMessage([NotNull] string mailFile, CancellationToken token)
-        {
-            return Task.Factory.StartNew(() => MimeMessage.Load(ParserOptions.Default, mailFile, token), token);
-        }
+	public static class MessageHelper
+	{
+		public static Task<MimeMessage> LoadMessage([NotNull] string mailFile, CancellationToken token)
+		{
+			return Task.Factory.StartNew(() => MimeMessage.Load(ParserOptions.Default, mailFile, token), token);
+		}
 
-        public static bool IsContentHtml([NotNull] this TextPart textPart)
-        {
-            return textPart.ContentType.Matches("text", "html");
-        }
+		public static bool IsContentHtml([NotNull] this TextPart textPart)
+		{
+			return textPart.ContentType.Matches("text", "html");
+		}
 
-        public static IEnumerable<MimePart> GetImages([NotNull] this MimeMessage mimeMessage)
-        {
-            return mimeMessage.BodyParts.Where(e => e.ContentType.Matches("image", "*"));
-        }
+		public static IEnumerable<MimePart> GetImages([NotNull] this MimeMessage mimeMessage)
+		{
+			return mimeMessage.BodyParts.Where(e => e.ContentType.Matches("image", "*"));
+		}
 
-        public static TextPart GetMainBodyTextPart([NotNull] this IEnumerable<MimePart> parts)
-        {
-            var mimeParts = parts.OfType<TextPart>().Where(s => !s.IsAttachment).ToArray();
+		public static TextPart GetMainBodyTextPart([NotNull] this IEnumerable<MimePart> parts)
+		{
+			var mimeParts = parts.OfType<TextPart>().Where(s => !s.IsAttachment).ToArray();
 
-            // return html if available first
-            var html = mimeParts.FirstOrDefault(s => s.IsContentHtml());
-            if (html != null)
-            {
-                return html;
-            }
+			// return html if available first
+			var html = mimeParts.FirstOrDefault(s => s.IsContentHtml());
+			if (html != null)
+			{
+				return html;
+			}
 
-            // anything else available
-            return mimeParts.FirstOrDefault();
-        }
-    }
+			// anything else available
+			return mimeParts.FirstOrDefault();
+		}
+	}
 }

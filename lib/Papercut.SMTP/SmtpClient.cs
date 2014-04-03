@@ -91,14 +91,14 @@ namespace Papercut.SMTP
 
 			this.session.Recipients.ForEach(
 				address =>
+				{
+					this.Write("RCPT TO:<{0}>\r\n", address);
+					response = this.Response();
+					if (response.Substring(0, 3) != "250")
 					{
-						this.Write("RCPT TO:<{0}>\r\n", address);
-						response = this.Response();
-						if (response.Substring(0, 3) != "250")
-						{
-							throw new SmtpException(response);
-						}
-					});
+						throw new SmtpException(response);
+					}
+				});
 
 			this.Write("DATA\r\n");
 			response = this.Response();
@@ -158,7 +158,7 @@ namespace Papercut.SMTP
 		{
 			var en = new ASCIIEncoding();
 
-		    byte[] writeBuffer = en.GetBytes(string.Format(format, args));
+			byte[] writeBuffer = en.GetBytes(string.Format(format, args));
 			NetworkStream stream = this.GetStream();
 			stream.Write(writeBuffer, 0, writeBuffer.Length);
 		}

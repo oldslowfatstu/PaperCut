@@ -21,16 +21,16 @@ namespace Papercut.UI
 {
 	#region Using
 
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Management;
-    using System.Net;
-    using System.Text.RegularExpressions;
-    using System.Windows;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Management;
+	using System.Net;
+	using System.Text.RegularExpressions;
+	using System.Windows;
 
-    using Papercut.Properties;
+	using Papercut.Properties;
 
-    #endregion
+	#endregion
 
 	/// <summary>
 	/// Interaction logic for OptionsWindow.xaml
@@ -71,13 +71,13 @@ namespace Papercut.UI
 			}
 
 			// Select the current one
-            this.ipsList.SelectedItem = Settings.Default.IP;
+			this.ipsList.SelectedItem = Settings.Default.IP;
 
 			// Set the other options
 			this.portNumber.Text = Settings.Default.Port.ToString();
 			this.startMinimized.IsChecked = Settings.Default.StartMinimized;
 			this.showDefaultTab.IsChecked = Settings.Default.ShowDefaultTab;
-		    this.minimizeOnClose.IsChecked = Settings.Default.MinimizeOnClose;
+			this.minimizeOnClose.IsChecked = Settings.Default.MinimizeOnClose;
 		}
 
 		#endregion
@@ -151,10 +151,10 @@ namespace Papercut.UI
 				Settings.Default.ShowDefaultTab = this.showDefaultTab.IsChecked.Value;
 			}
 
-		    if (this.minimizeOnClose.IsChecked.HasValue)
-		    {
-		        Settings.Default.MinimizeOnClose = this.minimizeOnClose.IsChecked.Value;
-		    }
+			if (this.minimizeOnClose.IsChecked.HasValue)
+			{
+				Settings.Default.MinimizeOnClose = this.minimizeOnClose.IsChecked.Value;
+			}
 
 			Settings.Default.Save();
 

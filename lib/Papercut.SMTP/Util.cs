@@ -20,222 +20,222 @@
 
 namespace Papercut.SMTP
 {
-    #region Using
+	#region Using
 
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Linq;
-    using System.Net;
-    using System.Text;
-    using System.Text.RegularExpressions;
-    using System.Threading;
+	using System;
+	using System.Collections;
+	using System.Collections.Generic;
+	using System.Globalization;
+	using System.Linq;
+	using System.Net;
+	using System.Text;
+	using System.Text.RegularExpressions;
 
-    #endregion
 
-    /// <summary>
-    /// The util.
-    /// </summary>
-    public static class Util
-    {
-        #region Public Methods and Operators
+	#endregion
 
-        /// <summary>
-        /// The add range.
-        /// </summary>
-        /// <param name="destinationCollection">
-        /// The destination collection.
-        /// </param>
-        /// <param name="sourceCollection">
-        /// The source collection.
-        /// </param>
-        /// <typeparam name="TValue">
-        /// </typeparam>
-        public static void AddRange<TValue>(
-            this ICollection<TValue> destinationCollection, IEnumerable<TValue> sourceCollection)
-        {
-            if (destinationCollection == null)
-            {
-                throw new ArgumentNullException("destinationCollection");
-            }
+	/// <summary>
+	/// The util.
+	/// </summary>
+	public static class Util
+	{
+		#region Public Methods and Operators
 
-            if (sourceCollection == null)
-            {
-                throw new ArgumentNullException("sourceCollection");
-            }
+		/// <summary>
+		/// The add range.
+		/// </summary>
+		/// <param name="destinationCollection">
+		/// The destination collection.
+		/// </param>
+		/// <param name="sourceCollection">
+		/// The source collection.
+		/// </param>
+		/// <typeparam name="TValue">
+		/// </typeparam>
+		public static void AddRange<TValue>(
+				this ICollection<TValue> destinationCollection, IEnumerable<TValue> sourceCollection)
+		{
+			if (destinationCollection == null)
+			{
+				throw new ArgumentNullException("destinationCollection");
+			}
 
-            foreach (var item in sourceCollection.ToList())
-            {
-                destinationCollection.Add(item);
-            }
-        }
+			if (sourceCollection == null)
+			{
+				throw new ArgumentNullException("sourceCollection");
+			}
 
-        /// <summary>
-        /// The add range.
-        /// </summary>
-        /// <param name="destinationList">
-        /// The destination list.
-        /// </param>
-        /// <param name="sourceList">
-        /// The source list.
-        /// </param>
-        public static void AddRange(this IList destinationList, IEnumerable sourceList)
-        {
-            if (destinationList == null)
-            {
-                throw new ArgumentNullException("destinationList");
-            }
+			foreach (var item in sourceCollection.ToList())
+			{
+				destinationCollection.Add(item);
+			}
+		}
 
-            if (sourceList == null)
-            {
-                throw new ArgumentNullException("sourceList");
-            }
+		/// <summary>
+		/// The add range.
+		/// </summary>
+		/// <param name="destinationList">
+		/// The destination list.
+		/// </param>
+		/// <param name="sourceList">
+		/// The source list.
+		/// </param>
+		public static void AddRange(this IList destinationList, IEnumerable sourceList)
+		{
+			if (destinationList == null)
+			{
+				throw new ArgumentNullException("destinationList");
+			}
 
-            foreach (var item in sourceList.Cast<object>().ToList())
-            {
-                destinationList.Add(item);
-            }
-        }
+			if (sourceList == null)
+			{
+				throw new ArgumentNullException("sourceList");
+			}
 
-        /// <summary>
-        /// The for each.
-        /// </summary>
-        /// <param name="source">
-        /// The source. 
-        /// </param>
-        /// <param name="act">
-        /// The act. 
-        /// </param>
-        /// <typeparam name="T">
-        /// </typeparam>
-        /// <returns>
-        /// </returns>
-        public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T> act)
-        {
-            foreach (T element in source.ToList())
-            {
-                act(element);
-            }
+			foreach (var item in sourceList.Cast<object>().ToList())
+			{
+				destinationList.Add(item);
+			}
+		}
 
-            return source;
-        }
+		/// <summary>
+		/// The for each.
+		/// </summary>
+		/// <param name="source">
+		/// The source. 
+		/// </param>
+		/// <param name="act">
+		/// The act. 
+		/// </param>
+		/// <typeparam name="T">
+		/// </typeparam>
+		/// <returns>
+		/// </returns>
+		public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T> act)
+		{
+			foreach (T element in source.ToList())
+			{
+				act(element);
+			}
 
-        /// <summary>
-        /// The get ip address.
-        /// </summary>
-        /// <returns>
-        /// The get ip address. 
-        /// </returns>
-        public static string GetIPAddress()
-        {
-            IPAddress ip = GetExternalIp();
+			return source;
+		}
 
-            if (ip == null)
-            {
-                return Dns.GetHostEntry(Dns.GetHostName()).HostName;
-            }
+		/// <summary>
+		/// The get ip address.
+		/// </summary>
+		/// <returns>
+		/// The get ip address. 
+		/// </returns>
+		public static string GetIPAddress()
+		{
+			IPAddress ip = GetExternalIp();
 
-            return Dns.GetHostEntry(ip).HostName;
-        }
+			if (ip == null)
+			{
+				return Dns.GetHostEntry(Dns.GetHostName()).HostName;
+			}
 
-        private static readonly Regex _timeZoneRegex = new Regex(@"\s?(\((?<tz>[A-Z]{3,4})\))?$", RegexOptions.Compiled);
+			return Dns.GetHostEntry(ip).HostName;
+		}
 
-        /// <summary>
-        /// Try parse date time.
-        /// </summary>
-        /// <param name="dateTimeParse">The date time parse.</param>
-        /// <returns>
-        /// .
-        /// </returns>
-        public static DateTime? TryParseSTMPDateTime(string dateTimeParse)
-        {
-            if (string.IsNullOrWhiteSpace(dateTimeParse))
-            {
-                return null;
-            }
+		private static readonly Regex _timeZoneRegex = new Regex(@"\s?(\((?<tz>[A-Z]{3,4})\))?$", RegexOptions.Compiled);
 
-            DateTime dateTime;
+		/// <summary>
+		/// Try parse date time.
+		/// </summary>
+		/// <param name="dateTimeParse">The date time parse.</param>
+		/// <returns>
+		/// .
+		/// </returns>
+		public static DateTime? TryParseSTMPDateTime(string dateTimeParse)
+		{
+			if (string.IsNullOrWhiteSpace(dateTimeParse))
+			{
+				return null;
+			}
 
-            // clean the timezone off
-            dateTimeParse = _timeZoneRegex.Replace(dateTimeParse.Trim().Replace("−", "-"), string.Empty).Trim();
+			DateTime dateTime;
 
-            return DateTime.TryParse(dateTimeParse, out dateTime) ? (DateTime?)dateTime : null;
-        }
+			// clean the timezone off
+			dateTimeParse = _timeZoneRegex.Replace(dateTimeParse.Trim().Replace("−", "-"), string.Empty).Trim();
 
-        #endregion
+			return DateTime.TryParse(dateTimeParse, out dateTime) ? (DateTime?)dateTime : null;
+		}
 
-        #region Methods
+		#endregion
 
-        /// <summary>
-        /// The get external ip.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        private static IPAddress GetExternalIp()
-        {
-            try
-            {
-                string whatIsMyIp = "http://www.whatismyip.com/automation/n09230945.asp";
-                var wc = new WebClient();
-                string requestHtml = Encoding.UTF8.GetString(wc.DownloadData(whatIsMyIp));
-                return IPAddress.Parse(requestHtml);
-            }
-            catch
-            {
-                return null;
-            }
-        }
+		#region Methods
 
-        /// <summary>
-        /// To FileSizeFormat... Thank you to "deepee1" on StackOverflow for this elegent solution:
-        /// http://stackoverflow.com/a/4975942
-        /// </summary>
-        /// <param name="bytes"></param>
-        /// <returns></returns>
-        public static string ToFileSizeFormat(this long bytes)
-        {
-            string[] suffixes = { "B", "KB", "MB", "GB", "TB", "PB" };
+		/// <summary>
+		/// The get external ip.
+		/// </summary>
+		/// <returns>
+		/// </returns>
+		private static IPAddress GetExternalIp()
+		{
+			try
+			{
+				string whatIsMyIp = "http://www.whatismyip.com/automation/n09230945.asp";
+				var wc = new WebClient();
+				string requestHtml = Encoding.UTF8.GetString(wc.DownloadData(whatIsMyIp));
+				return IPAddress.Parse(requestHtml);
+			}
+			catch
+			{
+				return null;
+			}
+		}
 
-            if (bytes == 0)
-            {
-                return string.Format("0{0}", suffixes[0]);
-            }
+		/// <summary>
+		/// To FileSizeFormat... Thank you to "deepee1" on StackOverflow for this elegent solution:
+		/// http://stackoverflow.com/a/4975942
+		/// </summary>
+		/// <param name="bytes"></param>
+		/// <returns></returns>
+		public static string ToFileSizeFormat(this long bytes)
+		{
+			string[] suffixes = { "B", "KB", "MB", "GB", "TB", "PB" };
 
-            var place = Convert.ToInt32(Math.Floor(Math.Log(bytes, 1024)));
+			if (bytes == 0)
+			{
+				return string.Format("0{0}", suffixes[0]);
+			}
 
-            double roundedNumber = Math.Round(bytes / Math.Pow(1024, place), 1);
+			var place = Convert.ToInt32(Math.Floor(Math.Log(bytes, 1024)));
 
-            return roundedNumber.ToString(CultureInfo.InvariantCulture) + suffixes[place];            
-        }
+			double roundedNumber = Math.Round(bytes / Math.Pow(1024, place), 1);
 
-        public static bool IsDefault<TIn>(this TIn value)
-        {
-            // from the master, J. Skeet:
-            return EqualityComparer<TIn>.Default.Equals(value, default(TIn));
-        }
+			return roundedNumber.ToString(CultureInfo.InvariantCulture) + suffixes[place];
+		}
 
-        public static TOut IfNotNull<TIn, TOut>(this TIn value, Func<TIn, TOut> continueFunc)
-        {
-            return value.IsDefault() ? default(TOut) : continueFunc(value);
-        }
+		public static bool IsDefault<TIn>(this TIn value)
+		{
+			// from the master, J. Skeet:
+			return EqualityComparer<TIn>.Default.Equals(value, default(TIn));
+		}
 
-        /// <summary>
-        /// Converts to an IEnumerable'T if obj is not default.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static IEnumerable<T> ToEnumerable<T>(this T obj)
-        {
-            if (!obj.IsDefault())
-            {
-                yield return obj;
-            }
+		public static TOut IfNotNull<TIn, TOut>(this TIn value, Func<TIn, TOut> continueFunc)
+		{
+			return value.IsDefault() ? default(TOut) : continueFunc(value);
+		}
 
-            yield break;
-        }
+		/// <summary>
+		/// Converts to an IEnumerable'T if obj is not default.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="obj"></param>
+		/// <returns></returns>
+		public static IEnumerable<T> ToEnumerable<T>(this T obj)
+		{
+			if (!obj.IsDefault())
+			{
+				yield return obj;
+			}
 
-        #endregion
-    }
+			yield break;
+		}
+
+		#endregion
+	}
 }

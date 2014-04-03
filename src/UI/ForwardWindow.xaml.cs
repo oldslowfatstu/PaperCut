@@ -21,15 +21,15 @@ namespace Papercut.UI
 {
 	#region Using
 
-    using System.IO;
-    using System.Text.RegularExpressions;
-    using System.Threading.Tasks;
-    using System.Windows;
+	using System.IO;
+	using System.Text.RegularExpressions;
+	using System.Threading.Tasks;
+	using System.Windows;
 
-    using Papercut.Properties;
-    using Papercut.SMTP;
+	using Papercut.Properties;
+	using Papercut.SMTP;
 
-    #endregion
+	#endregion
 
 	/// <summary>
 	/// Interaction logic for ForwardWindow.xaml
@@ -146,26 +146,26 @@ namespace Papercut.UI
 
 			this.worker = Task.Factory.StartNew(
 				() =>
+				{
+					using (var client = new SmtpClient(session))
 					{
-						using (var client = new SmtpClient(session))
-						{
-							client.Send();
-						}
-					});
+						client.Send();
+					}
+				});
 
 			this.worker.ContinueWith(
 				(t) =>
-					{
-						// Save settings for the next time
-						Settings.Default.ForwardServer = this.server.Text;
-						Settings.Default.ForwardTo = this.to.Text;
-						Settings.Default.ForwardFrom = this.@from.Text;
-						Settings.Default.Save();
+				{
+					// Save settings for the next time
+					Settings.Default.ForwardServer = this.server.Text;
+					Settings.Default.ForwardTo = this.to.Text;
+					Settings.Default.ForwardFrom = this.@from.Text;
+					Settings.Default.Save();
 
-						this.working = false;
-						this.sendingLabel.Visibility = Visibility.Hidden;
-						this.DialogResult = true;
-					},
+					this.working = false;
+					this.sendingLabel.Visibility = Visibility.Hidden;
+					this.DialogResult = true;
+				},
 				TaskScheduler.FromCurrentSynchronizationContext());
 
 			this.working = true;

@@ -8,115 +8,143 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Papercut.Properties {
-    
-    
-    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Any")]
-        public string IP {
-            get {
-                return ((string)(this["IP"]));
-            }
-            set {
-                this["IP"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("25")]
-        public int Port {
-            get {
-                return ((int)(this["Port"]));
-            }
-            set {
-                this["Port"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool StartMinimized {
-            get {
-                return ((bool)(this["StartMinimized"]));
-            }
-            set {
-                this["StartMinimized"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ForwardServer {
-            get {
-                return ((string)(this["ForwardServer"]));
-            }
-            set {
-                this["ForwardServer"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ForwardFrom {
-            get {
-                return ((string)(this["ForwardFrom"]));
-            }
-            set {
-                this["ForwardFrom"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ForwardTo {
-            get {
-                return ((string)(this["ForwardTo"]));
-            }
-            set {
-                this["ForwardTo"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowDefaultTab {
-            get {
-                return ((bool)(this["ShowDefaultTab"]));
-            }
-            set {
-                this["ShowDefaultTab"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool MinimizeOnClose {
-            get {
-                return ((bool)(this["MinimizeOnClose"]));
-            }
-            set {
-                this["MinimizeOnClose"] = value;
-            }
-        }
-    }
+namespace Papercut.Properties
+{
+
+
+	[global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
+	internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+	{
+
+		private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+
+		public static Settings Default
+		{
+			get
+			{
+				return defaultInstance;
+			}
+		}
+
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("Any")]
+		public string IP
+		{
+			get
+			{
+				return ((string)(this["IP"]));
+			}
+			set
+			{
+				this["IP"] = value;
+			}
+		}
+
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("25")]
+		public int Port
+		{
+			get
+			{
+				return ((int)(this["Port"]));
+			}
+			set
+			{
+				this["Port"] = value;
+			}
+		}
+
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("False")]
+		public bool StartMinimized
+		{
+			get
+			{
+				return ((bool)(this["StartMinimized"]));
+			}
+			set
+			{
+				this["StartMinimized"] = value;
+			}
+		}
+
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("")]
+		public string ForwardServer
+		{
+			get
+			{
+				return ((string)(this["ForwardServer"]));
+			}
+			set
+			{
+				this["ForwardServer"] = value;
+			}
+		}
+
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("")]
+		public string ForwardFrom
+		{
+			get
+			{
+				return ((string)(this["ForwardFrom"]));
+			}
+			set
+			{
+				this["ForwardFrom"] = value;
+			}
+		}
+
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("")]
+		public string ForwardTo
+		{
+			get
+			{
+				return ((string)(this["ForwardTo"]));
+			}
+			set
+			{
+				this["ForwardTo"] = value;
+			}
+		}
+
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("True")]
+		public bool ShowDefaultTab
+		{
+			get
+			{
+				return ((bool)(this["ShowDefaultTab"]));
+			}
+			set
+			{
+				this["ShowDefaultTab"] = value;
+			}
+		}
+
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("True")]
+		public bool MinimizeOnClose
+		{
+			get
+			{
+				return ((bool)(this["MinimizeOnClose"]));
+			}
+			set
+			{
+				this["MinimizeOnClose"] = value;
+			}
+		}
+	}
 }

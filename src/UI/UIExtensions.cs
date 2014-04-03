@@ -19,51 +19,51 @@
  */
 namespace Papercut.UI
 {
-    using System;
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Media;
+	using System;
+	using System.Windows;
+	using System.Windows.Controls;
+	using System.Windows.Media;
 
-    using Papercut.Annotations;
+	using Papercut.Annotations;
 
-    public static class UIExtensions
-    {
-        public static T GetObjectDataFromPoint<T>([NotNull] this ListBox source, Point point)
-            where T : class
-        {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
+	public static class UIExtensions
+	{
+		public static T GetObjectDataFromPoint<T>([NotNull] this ListBox source, Point point)
+				where T : class
+		{
+			if (source == null)
+			{
+				throw new ArgumentNullException("source");
+			}
 
-            var element = source.InputHitTest(point) as UIElement;
-            if (element == null)
-            {
-                return null;
-            }
+			var element = source.InputHitTest(point) as UIElement;
+			if (element == null)
+			{
+				return null;
+			}
 
-            // Get the object from the element
-            object data = DependencyProperty.UnsetValue;
+			// Get the object from the element
+			object data = DependencyProperty.UnsetValue;
 
-            while (data == DependencyProperty.UnsetValue)
-            {
-                // Try to get the object value for the corresponding element
-                data = source.ItemContainerGenerator.ItemFromContainer(element);
+			while (data == DependencyProperty.UnsetValue)
+			{
+				// Try to get the object value for the corresponding element
+				data = source.ItemContainerGenerator.ItemFromContainer(element);
 
-                // Get the parent and we will iterate again
-                if (data == DependencyProperty.UnsetValue && element != null)
-                {
-                    element = VisualTreeHelper.GetParent(element) as UIElement;
-                }
+				// Get the parent and we will iterate again
+				if (data == DependencyProperty.UnsetValue && element != null)
+				{
+					element = VisualTreeHelper.GetParent(element) as UIElement;
+				}
 
-                // If we reach the actual listbox then we must break to avoid an infinite loop
-                if (Equals(element, source))
-                {
-                    return null;
-                }
-            }
+				// If we reach the actual listbox then we must break to avoid an infinite loop
+				if (Equals(element, source))
+				{
+					return null;
+				}
+			}
 
-            return data as T;
-        }
-    }
+			return data as T;
+		}
+	}
 }

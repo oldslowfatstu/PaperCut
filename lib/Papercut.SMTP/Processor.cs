@@ -28,9 +28,8 @@ namespace Papercut.SMTP
 	using System.Linq;
 	using System.Net;
 	using System.Net.Sockets;
-	using System.Text;
 
-	using Papercut.SMTP;
+
 
 	#endregion
 
