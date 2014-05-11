@@ -39,7 +39,7 @@ namespace Papercut.SMTP
         public static readonly string DefaultSavePath;
 
         public static readonly IEnumerable<string> ExcludeFilesFromMigration =
-            new string[]
+                new string[]
             {
                 "readme.eml"
             };
@@ -102,7 +102,7 @@ namespace Papercut.SMTP
             return files.Select(file => new MessageEntry(file));
         }
 
-        public static string SaveMessage(IList<string> output)
+        public static string SaveMessage(int listenPort, IList<string> output)
         {
             string file = null;
 
@@ -112,11 +112,13 @@ namespace Papercut.SMTP
                 {
                     // the file must not exists.  the resolution of DataTime.Now may be slow w.r.t. the speed of the received files
                     var fileNameUnique = string.Format(
-                        "{0}-{1}.eml",
-                        DateTime.Now.ToString("yyyyMMddHHmmssFF"),
-                        Guid.NewGuid().ToString().Substring(0, 2));
+                            "{0}-{1}.eml",
+                            DateTime.Now.ToString("yyyyMMddHHmmssFF"),
+                            Guid.NewGuid().ToString().Substring(0, 2));
 
-                    file = Path.Combine(DefaultSavePath, fileNameUnique);
+                    if (!Directory.Exists(Path.Combine(DefaultSavePath, listenPort.ToString())))
+                        Directory.CreateDirectory(Path.Combine(DefaultSavePath, listenPort.ToString()));
+                    file = Path.Combine(DefaultSavePath, listenPort.ToString(), fileNameUnique);
                 }
                 while (File.Exists(file));
 
@@ -171,9 +173,9 @@ namespace Papercut.SMTP
                 }
 
                 string[] files = Directory
-                    .GetFiles(current, MessageFileSearchPattern)
-                    .Where(s => !ExcludeFilesFromMigration.Any(e => e.EndsWith(s, StringComparison.OrdinalIgnoreCase)))
-                    .ToArray();
+                        .GetFiles(current, MessageFileSearchPattern)
+                        .Where(s => !ExcludeFilesFromMigration.Any(e => e.EndsWith(s, StringComparison.OrdinalIgnoreCase)))
+                        .ToArray();
 
                 if (!files.Any())
                 {

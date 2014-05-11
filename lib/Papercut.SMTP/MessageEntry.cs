@@ -123,7 +123,7 @@ namespace Papercut.SMTP
         public override string ToString()
         {
             return string.Format
-                ("{0} ({1})", this.created.HasValue ? this.created.Value.ToString("G") : this.info.Name, (this.info.Length.ToFileSizeFormat()));
+                    ("{0} ({1})", this.created.HasValue ? this.created.Value.ToString("G") : this.info.Name, (this.info.Length.ToFileSizeFormat()));
         }
 
         #endregion

@@ -30,7 +30,7 @@ namespace Papercut.SMTP
     using System.Net;
     using System.Text;
     using System.Text.RegularExpressions;
-    using System.Threading;
+
 
     #endregion
 
@@ -53,7 +53,7 @@ namespace Papercut.SMTP
         /// <typeparam name="TValue">
         /// </typeparam>
         public static void AddRange<TValue>(
-            this ICollection<TValue> destinationCollection, IEnumerable<TValue> sourceCollection)
+                this ICollection<TValue> destinationCollection, IEnumerable<TValue> sourceCollection)
         {
             if (destinationCollection == null)
             {
@@ -206,7 +206,7 @@ namespace Papercut.SMTP
 
             double roundedNumber = Math.Round(bytes / Math.Pow(1024, place), 1);
 
-            return roundedNumber.ToString(CultureInfo.InvariantCulture) + suffixes[place];            
+            return roundedNumber.ToString(CultureInfo.InvariantCulture) + suffixes[place];
         }
 
         public static bool IsDefault<TIn>(this TIn value)

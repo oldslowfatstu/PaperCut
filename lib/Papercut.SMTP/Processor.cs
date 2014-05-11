@@ -28,9 +28,8 @@ namespace Papercut.SMTP
     using System.Linq;
     using System.Net;
     using System.Net.Sockets;
-    using System.Text;
 
-    using Papercut.SMTP;
+
 
     #endregion
 
@@ -164,7 +163,7 @@ namespace Papercut.SMTP
         {
             // Check command order
             if (connection.Session.Sender == null || connection.Session.MailFrom == null
-                    || connection.Session.Recipients.Count == 0)
+                            || connection.Session.Recipients.Count == 0)
             {
                 connection.Send("503 Bad sequence of commands");
                 return;
@@ -197,13 +196,13 @@ namespace Papercut.SMTP
                     reader.Close();
                 }
 
-                file = MessageFileService.SaveMessage(output);
+                file = MessageFileService.SaveMessage(((IPEndPoint)connection.Client.LocalEndPoint).Port, output);
             }
             catch (IOException e)
             {
                 Logger.WriteWarning(
-                    "IOException received in Processor.DATA while reading message.  Closing connection.  Message: " + e.Message,
-                    connection.ConnectionId);
+                        "IOException received in Processor.DATA while reading message.  Closing connection.  Message: " + e.Message,
+                        connection.ConnectionId);
                 connection.Close();
                 return;
             }

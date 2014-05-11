@@ -20,110 +20,110 @@
 
 namespace Papercut.SMTP
 {
-	#region Using
+    #region Using
 
-	using System.Collections.Generic;
+    using System.Collections.Generic;
 
-	#endregion
+    #endregion
 
-	/// <summary>
-	/// The smtp session.
-	/// </summary>
-	public class SmtpSession
-	{
-		#region Constants and Fields
+    /// <summary>
+    /// The smtp session.
+    /// </summary>
+    public class SmtpSession
+    {
+        #region Constants and Fields
 
-		/// <summary>
-		/// The _mail from.
-		/// </summary>
-		private string _mailFrom;
+        /// <summary>
+        /// The _mail from.
+        /// </summary>
+        private string _mailFrom;
 
-		/// <summary>
-		/// The _recipients.
-		/// </summary>
-		private IList<string> _recipients = new List<string>();
+        /// <summary>
+        /// The _recipients.
+        /// </summary>
+        private IList<string> _recipients = new List<string>();
 
-		/// <summary>
-		/// The use utf 8.
-		/// </summary>
-		private bool _useUtf8;
+        /// <summary>
+        /// The use utf 8.
+        /// </summary>
+        private bool _useUtf8;
 
-		#endregion
+        #endregion
 
-		#region Public Properties
+        #region Public Properties
 
-		/// <summary>
-		/// Gets or sets MailFrom.
-		/// </summary>
-		public string MailFrom
-		{
-			get
-			{
-				return this._mailFrom;
-			}
+        /// <summary>
+        /// Gets or sets MailFrom.
+        /// </summary>
+        public string MailFrom
+        {
+            get
+            {
+                return this._mailFrom;
+            }
 
-			set
-			{
-				this._mailFrom = value;
-			}
-		}
+            set
+            {
+                this._mailFrom = value;
+            }
+        }
 
-		/// <summary>
-		/// Gets or sets Message.
-		/// </summary>
-		public byte[] Message { get; set; }
+        /// <summary>
+        /// Gets or sets Message.
+        /// </summary>
+        public byte[] Message { get; set; }
 
-		/// <summary>
-		/// Gets or sets Recipients.
-		/// </summary>
-		public IList<string> Recipients
-		{
-			get
-			{
-				return this._recipients;
-			}
+        /// <summary>
+        /// Gets or sets Recipients.
+        /// </summary>
+        public IList<string> Recipients
+        {
+            get
+            {
+                return this._recipients;
+            }
 
-			set
-			{
-				this._recipients = value;
-			}
-		}
+            set
+            {
+                this._recipients = value;
+            }
+        }
 
-		/// <summary>
-		/// Gets or sets Sender.
-		/// </summary>
-		public string Sender { get; set; }
+        /// <summary>
+        /// Gets or sets Sender.
+        /// </summary>
+        public string Sender { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether UseUtf8.
-		/// </summary>
-		public bool UseUtf8
-		{
-			get
-			{
-				return this._useUtf8;
-			}
+        /// <summary>
+        /// Gets or sets a value indicating whether UseUtf8.
+        /// </summary>
+        public bool UseUtf8
+        {
+            get
+            {
+                return this._useUtf8;
+            }
 
-			set
-			{
-				this._useUtf8 = value;
-			}
-		}
+            set
+            {
+                this._useUtf8 = value;
+            }
+        }
 
-		#endregion
+        #endregion
 
-		#region Public Methods and Operators
+        #region Public Methods and Operators
 
-		/// <summary>
-		/// The reset.
-		/// </summary>
-		public void Reset()
-		{
-			this._mailFrom = null;
-			this._recipients.Clear();
-			this._useUtf8 = false;
-		}
+        /// <summary>
+        /// The reset.
+        /// </summary>
+        public void Reset()
+        {
+            this._mailFrom = null;
+            this._recipients.Clear();
+            this._useUtf8 = false;
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }

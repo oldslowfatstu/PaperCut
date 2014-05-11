@@ -28,166 +28,166 @@ using log4net.Config;
 
 namespace Papercut.SMTP
 {
-	#region Using
+    #region Using
 
-	using System;
-	using System.Diagnostics;
-	using System.Reflection;
+    using System;
+    using System.Diagnostics;
+    using System.Reflection;
 
-	using log4net;
+    using log4net;
 
-	#endregion
+    #endregion
 
-	/// <summary>
-	/// Summary description for Logger.
-	/// </summary>
-	public static class Logger
-	{
-		#region Constants and Fields
+    /// <summary>
+    /// Summary description for Logger.
+    /// </summary>
+    public static class Logger
+    {
+        #region Constants and Fields
 
-		/// <summary>
-		/// The log.
-		/// </summary>
-		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        /// <summary>
+        /// The log.
+        /// </summary>
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-		#endregion
+        #endregion
 
-		#region Public Methods and Operators
+        #region Public Methods and Operators
 
-		/// <summary>
-		/// The write.
-		/// </summary>
-		/// <param name="message">
-		/// The message.
-		/// </param>
-		public static void Write(string message)
-		{
-			if (log.IsInfoEnabled)
-			{
-				log.Info(string.Format("- {0}", message));
-			}
-		}
+        /// <summary>
+        /// The write.
+        /// </summary>
+        /// <param name="message">
+        /// The message.
+        /// </param>
+        public static void Write(string message)
+        {
+            if (log.IsInfoEnabled)
+            {
+                log.Info(string.Format("- {0}", message));
+            }
+        }
 
-		/// <summary>
-		/// The write.
-		/// </summary>
-		/// <param name="message">
-		/// The message.
-		/// </param>
-		/// <param name="connectionId">
-		/// The connection id.
-		/// </param>
-		public static void Write(string message, int connectionId)
-		{
-			if (log.IsInfoEnabled)
-			{
-				log.Info(string.Format("[{0}] - {1}", connectionId, message));
-			}
-		}
+        /// <summary>
+        /// The write.
+        /// </summary>
+        /// <param name="message">
+        /// The message.
+        /// </param>
+        /// <param name="connectionId">
+        /// The connection id.
+        /// </param>
+        public static void Write(string message, int connectionId)
+        {
+            if (log.IsInfoEnabled)
+            {
+                log.Info(string.Format("[{0}] - {1}", connectionId, message));
+            }
+        }
 
-		/// <summary>
-		/// The write debug.
-		/// </summary>
-		/// <param name="message">
-		/// The message.
-		/// </param>
-		public static void WriteDebug(string message)
-		{
-			if (log.IsDebugEnabled)
-			{
-				log.Debug(string.Format("- {0}", message));
-			}
+        /// <summary>
+        /// The write debug.
+        /// </summary>
+        /// <param name="message">
+        /// The message.
+        /// </param>
+        public static void WriteDebug(string message)
+        {
+            if (log.IsDebugEnabled)
+            {
+                log.Debug(string.Format("- {0}", message));
+            }
 
-			Debug.WriteLine(message);
-		}
+            Debug.WriteLine(message);
+        }
 
-		/// <summary>
-		/// The write debug.
-		/// </summary>
-		/// <param name="message">
-		/// The message.
-		/// </param>
-		/// <param name="connectionId">
-		/// The connection id.
-		/// </param>
-		public static void WriteDebug(string message, int connectionId)
-		{
-			if (log.IsDebugEnabled)
-			{
-				log.Debug(string.Format("[{0}] - {1}", connectionId, message));
-			}
+        /// <summary>
+        /// The write debug.
+        /// </summary>
+        /// <param name="message">
+        /// The message.
+        /// </param>
+        /// <param name="connectionId">
+        /// The connection id.
+        /// </param>
+        public static void WriteDebug(string message, int connectionId)
+        {
+            if (log.IsDebugEnabled)
+            {
+                log.Debug(string.Format("[{0}] - {1}", connectionId, message));
+            }
 
-			Debug.WriteLine(string.Format("[{0}] - {1}", connectionId, message));
-		}
+            Debug.WriteLine(string.Format("[{0}] - {1}", connectionId, message));
+        }
 
-		/// <summary>
-		/// The write error.
-		/// </summary>
-		/// <param name="message">
-		/// The message.
-		/// </param>
-		/// <param name="e">
-		/// The e.
-		/// </param>
-		public static void WriteError(string message, Exception e)
-		{
-			if (log.IsErrorEnabled)
-			{
-				log.Error(string.Format("- {0}", message), e);
-			}
-		}
+        /// <summary>
+        /// The write error.
+        /// </summary>
+        /// <param name="message">
+        /// The message.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        public static void WriteError(string message, Exception e)
+        {
+            if (log.IsErrorEnabled)
+            {
+                log.Error(string.Format("- {0}", message), e);
+            }
+        }
 
-		/// <summary>
-		/// The write error.
-		/// </summary>
-		/// <param name="message">
-		/// The message.
-		/// </param>
-		/// <param name="e">
-		/// The e.
-		/// </param>
-		/// <param name="connectionId">
-		/// The connection id.
-		/// </param>
-		public static void WriteError(string message, Exception e, int connectionId)
-		{
-			if (log.IsErrorEnabled)
-			{
-				log.Error(string.Format("[{0}] - {1}", connectionId, message), e);
-			}
-		}
+        /// <summary>
+        /// The write error.
+        /// </summary>
+        /// <param name="message">
+        /// The message.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        /// <param name="connectionId">
+        /// The connection id.
+        /// </param>
+        public static void WriteError(string message, Exception e, int connectionId)
+        {
+            if (log.IsErrorEnabled)
+            {
+                log.Error(string.Format("[{0}] - {1}", connectionId, message), e);
+            }
+        }
 
-		/// <summary>
-		/// The write warning.
-		/// </summary>
-		/// <param name="message">
-		/// The message.
-		/// </param>
-		public static void WriteWarning(string message)
-		{
-			if (log.IsWarnEnabled)
-			{
-				log.Warn(string.Format("- {0}", message));
-			}
-		}
+        /// <summary>
+        /// The write warning.
+        /// </summary>
+        /// <param name="message">
+        /// The message.
+        /// </param>
+        public static void WriteWarning(string message)
+        {
+            if (log.IsWarnEnabled)
+            {
+                log.Warn(string.Format("- {0}", message));
+            }
+        }
 
-		/// <summary>
-		/// The write warning.
-		/// </summary>
-		/// <param name="message">
-		/// The message.
-		/// </param>
-		/// <param name="connectionId">
-		/// The connection id.
-		/// </param>
-		public static void WriteWarning(string message, int connectionId)
-		{
-			if (log.IsWarnEnabled)
-			{
-				log.Warn(string.Format("[{0}] - {1}", connectionId, message));
-			}
-		}
+        /// <summary>
+        /// The write warning.
+        /// </summary>
+        /// <param name="message">
+        /// The message.
+        /// </param>
+        /// <param name="connectionId">
+        /// The connection id.
+        /// </param>
+        public static void WriteWarning(string message, int connectionId)
+        {
+            if (log.IsWarnEnabled)
+            {
+                log.Warn(string.Format("[{0}] - {1}", connectionId, message));
+            }
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }

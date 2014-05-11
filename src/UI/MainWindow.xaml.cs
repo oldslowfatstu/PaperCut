@@ -28,7 +28,6 @@ namespace Papercut.UI
     using System.IO;
     using System.Linq;
     using System.Reflection;
-    using System.Security.AccessControl;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
@@ -70,7 +69,7 @@ namespace Papercut.UI
 
         private readonly NotifyIcon notification;
 
-        private readonly Server server;
+        private readonly SmtpServer server;
 
         private CancellationTokenSource _currentMessageCancellationTokenSource = null;
 
@@ -84,11 +83,11 @@ namespace Papercut.UI
 
             // Set up the notification icon
             this.notification = new NotifyIcon
-                                {
-                                    Icon = new Icon(Application.GetResourceStream(new Uri("/Papercut;component/App.ico", UriKind.Relative)).Stream),
-                                    Text = "Papercut",
-                                    Visible = true
-                                };
+                                                    {
+                                                        Icon = new Icon(Application.GetResourceStream(new Uri("/Papercut;component/App.ico", UriKind.Relative)).Stream),
+                                                        Text = "Papercut",
+                                                        Visible = true
+                                                    };
 
             this.notification.Click += delegate
             {
@@ -107,7 +106,7 @@ namespace Papercut.UI
             };
 
             this.notification.ContextMenu = new ContextMenu(
-                new[]
+                    new[]
                 {
                     new MenuItem(
                         "Show",
@@ -131,7 +130,7 @@ namespace Papercut.UI
             Processor.MessageReceived += this.Processor_MessageReceived;
 
             // Start listening for connections
-            this.server = new Server();
+            this.server = new SmtpServer();
             try
             {
                 this.server.Bind(Settings.Default.IP, Settings.Default.Port);
@@ -139,8 +138,8 @@ namespace Papercut.UI
             catch
             {
                 MessageBox.Show(
-                    "Failed to bind to the address/port specified.  The port may already be in use by another process.  Please change the configuration in the Options dialog.",
-                    "Operation Failure");
+                        "Failed to bind to the address/port specified.  The port may already be in use by another process.  Please change the configuration in the Options dialog.",
+                        "Operation Failure");
             }
 
             this.SetTabs();
@@ -278,8 +277,8 @@ namespace Papercut.UI
             catch (Exception)
             {
                 MessageBox.Show(
-                    "Failed to rebind to the address/port specified.  The port may already be in use by another process.  Please update the configuration.",
-                    "Operation Failure");
+                        "Failed to rebind to the address/port specified.  The port may already be in use by another process.  Please update the configuration.",
+                        "Operation Failure");
                 this.Options_Click(null, null);
             }
         }
@@ -335,8 +334,8 @@ namespace Papercut.UI
                 }
 
                 htmlText = replaceEmbeddedImageFormats.Aggregate(
-                    htmlText,
-                    (current, format) => current.Replace(string.Format(format, image.ContentId), image.ContentId));
+                        htmlText,
+                        (current, format) => current.Replace(string.Format(format, image.ContentId), image.ContentId));
             }
 
             File.WriteAllText(htmlFile, htmlText, Encoding.Unicode);
@@ -433,7 +432,7 @@ namespace Papercut.UI
                 this.bodyView.Text = string.Empty;
                 this.textViewTab.Visibility = Visibility.Hidden;
                 this.tabControl.SelectedIndex = this.defaultTab.IsVisible ? 0 : 1;
-               
+
                 // Clear fields
                 this.FromEdit.Text = string.Empty;
                 this.ToEdit.Text = string.Empty;
@@ -475,10 +474,10 @@ namespace Papercut.UI
 
                 // show it...
                 loadMessageTask.ContinueWith(
-                    task => this.DisplayMimeMessage(task.Result),
-                    this._currentMessageCancellationTokenSource.Token,
-                    TaskContinuationOptions.NotOnCanceled,
-                    TaskScheduler.FromCurrentSynchronizationContext());
+                        task => this.DisplayMimeMessage(task.Result),
+                        this._currentMessageCancellationTokenSource.Token,
+                        TaskContinuationOptions.NotOnCanceled,
+                        TaskScheduler.FromCurrentSynchronizationContext());
             }
             catch (Exception ex)
             {
@@ -551,7 +550,7 @@ namespace Papercut.UI
         }
 
         #endregion
-        
+
         Point? _dragStartPoint = null;
 
         private void MessagesList_OnPreviewLeftMouseDown(object sender, MouseButtonEventArgs e)

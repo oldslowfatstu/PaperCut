@@ -36,8 +36,8 @@ namespace Papercut.SMTP
     /// <summary>
     ///     The server.
     /// </summary>
-    [Export(typeof(IServer))]
-    public class Server : IServer
+    [Export(typeof(ISmtpServer))]
+    public class SmtpServer : ISmtpServer
     {
         #region Fields
 
@@ -293,7 +293,7 @@ namespace Papercut.SMTP
                         {
                             double memusage = (double)Process.GetCurrentProcess().WorkingSet64 / 1024 / 1024;
                             Logger.Write(
-                                string.Format("Current status: {0} connections, {1}mb memory used", this._connections.Count, memusage.ToString("0.#")));
+                                    string.Format("Current status: {0} connections, {1}mb memory used", this._connections.Count, memusage.ToString("0.#")));
                             statusCount = 0;
                         }
                         else

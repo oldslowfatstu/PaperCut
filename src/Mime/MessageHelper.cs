@@ -20,13 +20,10 @@
 
 namespace Papercut.Mime
 {
-    using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Windows.Automation;
 
     using MimeKit;
 

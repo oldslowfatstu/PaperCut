@@ -29,7 +29,7 @@ namespace Papercut.UI
     public static class UIExtensions
     {
         public static T GetObjectDataFromPoint<T>([NotNull] this ListBox source, Point point)
-            where T : class
+                where T : class
         {
             if (source == null)
             {
