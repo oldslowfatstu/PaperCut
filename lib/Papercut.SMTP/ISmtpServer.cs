@@ -20,23 +20,23 @@
 
 namespace Papercut.SMTP
 {
-	/// <summary>
-	/// The Server interface.
-	/// </summary>
-	public interface ISmtpServer
-	{
-		#region Public Methods and Operators
+    /// <summary>
+    /// The Server interface.
+    /// </summary>
+    public interface ISmtpServer
+    {
+        #region Public Methods and Operators
 
-		/// <summary>
-		///     The start.
-		/// </summary>
-		void Bind(string ip, int port);
+        /// <summary>
+        ///     The start.
+        /// </summary>
+        void Bind(string ip, int port);
 
-		/// <summary>
-		///     The stop.
-		/// </summary>
-		void Stop();
+        /// <summary>
+        ///     The stop.
+        /// </summary>
+        void Stop();
 
-		#endregion
-	}
+        #endregion
+    }
 }

@@ -9,23 +9,23 @@
 
 namespace Papercut.UI
 {
-	using System.Windows.Controls;
+    using System.Windows.Controls;
 
-	/// <summary>
-	///     Interaction logic for Spinner.xaml
-	/// </summary>
-	public partial class Spinner : UserControl
-	{
-		#region Constructors and Destructors
+    /// <summary>
+    ///     Interaction logic for Spinner.xaml
+    /// </summary>
+    public partial class Spinner : UserControl
+    {
+        #region Constructors and Destructors
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="Spinner"/> class.
-		/// </summary>
-		public Spinner()
-		{
-			this.InitializeComponent();
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Spinner"/> class.
+        /// </summary>
+        public Spinner()
+        {
+            this.InitializeComponent();
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }
